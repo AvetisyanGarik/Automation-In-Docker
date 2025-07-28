@@ -1,0 +1,14 @@
+ansible
+ansible-navigator
+requests
+netmiko
+requests_ntlm
+dnspython
+pyats
+genie
+jinja2
+pexpect
+ncclient
+xmltodict
+pyang
+urllib3

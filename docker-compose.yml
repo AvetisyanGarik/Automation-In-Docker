@@ -1,0 +1,26 @@
+version: '3'
+services:
+  aid-lab:
+    build: .
+    container_name: aid-lab
+    volumes:
+      - ./workspace:/workspace
+    tty: true
+    stdin_open: true
+    networks:
+      my_bridge_network:
+        ipv4_address: 172.16.16.100
+    ports:
+      - "443:443"    # Expose HTTPS (port 443)
+      - "830:830"    # Expose NETCONF (port 830)
+      - "22:22"    # Expose SSH (port 22)
+    environment:
+      - ENV_VAR_NAME=value  # Optional environment variables
+
+networks:
+  my_bridge_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.16.0/24  # Define the subnet for the bridge network
+          gateway: 172.16.16.1    # Define the gateway for the bridge network
